@@ -1,0 +1,21 @@
+{
+  "name": "Rafly Ahmad Muzaki Portfolio",
+  "short_name": "Rafly.Dev",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#070913",
+  "theme_color": "#00f0ff",
+  "description": "Portofolio Web Pribadi Rafly Ahmad Muzaki - HTML, CSS, & JS",
+  "icons": [
+    {
+      "src": "assets/bre.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "assets/tampan.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
