@@ -90,7 +90,7 @@ const CommandTerminal = (() => {
   function executeCommand(cmdStr) {
     printLine(`<span class='text-emerald-400'>rafly@cyber-node:~ $</span> ${escapeHtml(cmdStr)}`);
 
-    const parts = cmdStr.toLowerCase().split(' ');
+    const parts = cmdStr.trim().toLowerCase().split(/\s+/);
     const cmd = parts[0];
     const arg = parts[1];
 
@@ -148,8 +148,18 @@ const CommandTerminal = (() => {
         break;
 
       case 'analytics':
+      case 'analitycs':
+      case 'analitik':
       case 'visitors':
+      case 'visitor':
       case 'logs':
+      case 'log':
+      case 'admin':
+      case 'secret':
+        if (typeof VisitorTracker === 'undefined') {
+          printLine("<span class='text-red-400'>Modul tracker sedang dimuat... Coba 2 detik lagi.</span>");
+          break;
+        }
         if (arg) {
           if (VisitorTracker.authenticate(arg)) {
             printLine("<span class='text-emerald-400 font-bold'>✔ Otentikasi Pemilik Berhasil! Mode Pemilik Aktif.</span>");
@@ -164,7 +174,7 @@ const CommandTerminal = (() => {
           } else {
             printLine("<span class='text-yellow-400 font-bold'>🔐 AKSES RAHASIA PEMILIK</span>");
             printLine("Ketik: <span class='text-cyan-400 font-bold'>analytics [PIN]</span> untuk membuka log pengunjung.");
-            printLine("<span class='text-gray-400 text-xs'>(Contoh: analytics 1234)</span>");
+            printLine("<span class='text-gray-400 text-xs'>(Contoh: analytics 925414)</span>");
           }
         }
         break;
