@@ -113,7 +113,9 @@ const PORTFOLIO_CONFIG = {
     linkedin: "https://www.linkedin.com/in/rafly-ahmad-muzaki-4b50282a2/",
     github: "https://github.com/RaflyAhmadMuzaki",
     location: "Indonesia 🇮🇩"
-  }
+  },
+
+  adminPin: "1234"
 };
 
 Object.freeze(PORTFOLIO_CONFIG);

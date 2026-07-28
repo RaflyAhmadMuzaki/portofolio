@@ -147,6 +147,46 @@ const CommandTerminal = (() => {
         outputElem.innerHTML = '';
         break;
 
+      case 'analytics':
+      case 'visitors':
+      case 'logs':
+        if (arg) {
+          if (VisitorTracker.authenticate(arg)) {
+            printLine("<span class='text-emerald-400 font-bold'>✔ Otentikasi Pemilik Berhasil! Mode Pemilik Aktif.</span>");
+            printLine("<span class='text-gray-400 text-xs'>ℹ️ Browser ini ditandai sebagai PEMILIK. Kunjungan Anda sendiri tidak akan dicatat lagi.</span>");
+            displayLogsTable();
+          } else {
+            printLine("<span class='text-red-400 font-bold'>❌ PIN Salah! Akses Ditolak.</span>");
+          }
+        } else {
+          if (VisitorTracker.isAuth()) {
+            displayLogsTable();
+          } else {
+            printLine("<span class='text-yellow-400 font-bold'>🔐 AKSES RAHASIA PEMILIK</span>");
+            printLine("Ketik: <span class='text-cyan-400 font-bold'>analytics [PIN]</span> untuk membuka log pengunjung.");
+            printLine("<span class='text-gray-400 text-xs'>(Contoh: analytics 1234)</span>");
+          }
+        }
+        break;
+
+      case 'export-logs':
+        if (VisitorTracker.isAuth()) {
+          VisitorTracker.exportLogsJSON();
+          printLine("<span class='text-emerald-400'>✔ File log JSON sedang di-download...</span>");
+        } else {
+          printLine("<span class='text-red-400'>Akses Ditolak! Ketik 'analytics [PIN]' terlebih dahulu.</span>");
+        }
+        break;
+
+      case 'clear-analytics':
+        if (VisitorTracker.isAuth()) {
+          const res = VisitorTracker.clearLogs();
+          printLine(`<span class='text-emerald-400'>✔ ${res.message}</span>`);
+        } else {
+          printLine("<span class='text-red-400'>Akses Ditolak! Ketik 'analytics [PIN]' terlebih dahulu.</span>");
+        }
+        break;
+
       case 'exit':
         closeTerminal();
         break;
@@ -155,6 +195,41 @@ const CommandTerminal = (() => {
         printLine(`<span class='text-red-400'>Perintah tidak dikenali: '${escapeHtml(cmdStr)}'. Ketik 'help' untuk panduan.</span>`);
         break;
     }
+  }
+
+  function displayLogsTable() {
+    const res = VisitorTracker.getLogs();
+    if (!res.success) {
+      printLine(`<span class='text-red-400'>${res.message}</span>`);
+      return;
+    }
+
+    const logs = res.logs;
+    if (!logs || logs.length === 0) {
+      printLine("<span class='text-yellow-400'>Belum ada data kunjungan yang tercatat.</span>");
+      return;
+    }
+
+    printLine(`<span class='text-cyan-400 font-bold'>📊 DAFTAR PENGUNJUNG WEB PORTOFOLIO (${logs.length} Log Total):</span>`);
+    printLine("<span class='text-gray-600'>----------------------------------------------------------------------------------</span>");
+
+    logs.slice(0, 25).forEach((log, idx) => {
+      const isPersonal = log.isPersonalLink ? "<span class='text-pink-400 font-bold'>[PERSONAL LINK]</span>" : "<span class='text-gray-400'>[ANONIM]</span>";
+      const target = `<span class='text-emerald-300 font-bold'>${escapeHtml(log.targetName)}</span>`;
+      
+      printLine(`<strong>#${idx + 1}</strong> | ${log.timestamp} | ${isPersonal} ${target}`);
+      printLine(`   └─ 📍 Lokasi   : <span class='text-yellow-300'>${escapeHtml(log.location)}</span>`);
+      printLine(`   └─ 💻 Perangkat: <span class='text-gray-300'>${escapeHtml(log.device)} (${log.screen})</span>`);
+      printLine(`   └─ 🌐 Sumber   : <span class='text-cyan-300'>${escapeHtml(log.referrer)}</span>`);
+      printLine("<span class='text-gray-600'>----------------------------------------------------------------------------------</span>");
+    });
+
+    if (logs.length > 25) {
+      printLine(`<span class='text-gray-400'>...dan ${logs.length - 25} log terdahulu lainnya.</span>`);
+    }
+
+    printLine("💡 <i>Ketik <span class='text-cyan-400'>export-logs</span> untuk download semua log ke file JSON.</i>");
+    printLine("💡 <i>Ketik <span class='text-cyan-400'>clear-analytics</span> untuk menghapus log.</i>");
   }
 
   function applyTheme(themeName) {
