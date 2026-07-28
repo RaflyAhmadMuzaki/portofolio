@@ -25,7 +25,7 @@ const VisitorTracker = (() => {
   function authenticate(inputPin) {
     const validPin = (typeof PORTFOLIO_CONFIG !== 'undefined' && PORTFOLIO_CONFIG.adminPin)
       ? PORTFOLIO_CONFIG.adminPin
-      : '1234';
+      : '925414';
 
     if (String(inputPin).trim() === String(validPin).trim()) {
       isAuthenticated = true;

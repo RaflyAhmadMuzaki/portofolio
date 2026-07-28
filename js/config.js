@@ -115,7 +115,7 @@ const PORTFOLIO_CONFIG = {
     location: "Indonesia 🇮🇩"
   },
 
-  adminPin: "1234"
+  adminPin: "925414"
 };
 
 Object.freeze(PORTFOLIO_CONFIG);

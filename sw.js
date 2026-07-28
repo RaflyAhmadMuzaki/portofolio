@@ -6,7 +6,7 @@
  * offline performance. (No forced installation prompt added).
  */
 
-const CACHE_NAME = 'bre-cyber-v1.1';
+const CACHE_NAME = 'bre-cyber-v1.2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
