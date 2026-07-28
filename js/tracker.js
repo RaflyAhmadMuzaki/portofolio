@@ -198,6 +198,41 @@ const VisitorTracker = (() => {
         updateLogLocation(visitData.id, visitData.location);
       }
     }
+
+    // Send Real-Time Telegram Notification to Owner
+    sendTelegramNotification(visitData);
+  }
+
+  async function sendTelegramNotification(data) {
+    if (typeof PORTFOLIO_CONFIG === 'undefined') return;
+    const token = PORTFOLIO_CONFIG.telegramToken;
+    const chatId = PORTFOLIO_CONFIG.telegramChatId;
+    if (!token || !chatId) return;
+
+    const message = 
+`🚀 *PENGUNJUNG PORTOFOLIO BARU!*
+━━━━━━━━━━━━━━━━━━
+👤 *Nama/Tag:* \`${data.targetName}\`
+📍 *Lokasi:* ${data.location}
+📱 *Perangkat:* ${data.device}
+📐 *Layar:* ${data.screen}
+🌐 *Sumber:* ${data.referrer}
+⏰ *Waktu:* ${data.timestamp}
+━━━━━━━━━━━━━━━━━━`;
+
+    try {
+      await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+          parse_mode: 'Markdown'
+        })
+      });
+    } catch (e) {
+      console.warn('Telegram notification error:', e);
+    }
   }
 
   function saveLogToStorage(visitData) {

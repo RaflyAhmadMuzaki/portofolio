@@ -115,7 +115,9 @@ const PORTFOLIO_CONFIG = {
     location: "Indonesia 🇮🇩"
   },
 
-  adminPin: "925414"
+  adminPin: "925414",
+  telegramToken: "8800524334:AAF7Ye417oGkN9WVGPV3fcJKMyCc03zwsXE",
+  telegramChatId: "6939465787"
 };
 
 Object.freeze(PORTFOLIO_CONFIG);
