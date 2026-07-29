@@ -193,3 +193,24 @@ body {
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   Language Selector Styling (Native i18n)
+   ========================================================================== */
+#lang-dropdown::-webkit-scrollbar {
+  width: 4px;
+}
+#lang-dropdown::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+#lang-dropdown::-webkit-scrollbar-thumb {
+  background: var(--accent-glow);
+  border-radius: 2px;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+

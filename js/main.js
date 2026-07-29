@@ -412,7 +412,7 @@ function initContactForm() {
     }
 
     setTimeout(() => {
-      const waText = encodeURIComponent(`Halo Rafly! Gua ${cleanName} (${cleanEmail}).\n\nPesan: ${cleanMsg}`);
+      const waText = encodeURIComponent(`Halo Rafly! Saya ${cleanName} (${cleanEmail}).\n\nPesan: ${cleanMsg}`);
       const waUrl = `https://wa.me/6282263074525?text=${waText}`;
 
       showToast('🚀 Membuka WhatsApp...');

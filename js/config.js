@@ -32,18 +32,18 @@ const PORTFOLIO_CONFIG = {
         badge: "TENTANG RAFLY",
         tabName: "📸 Profil Saya",
         title: "Tentang Rafly Ahmad Muzaki",
-        story: "Halo, nama saya Rafly Ahmad Muzaki. Saat ini saya sedang tertarik mempelajari dasar-dasar pemrograman web. Masih banyak hal baru yang terus dipelajari, dan website ini dibuat sebagai wadah untuk merapikan hasil latihan serta proses belajar.",
+        story: "Halo! Perkenalkan, nama saya Rafly Ahmad Muzaki. Saat ini, saya adalah mahasiswa aktif program studi S1 Teknik Informatika di UIN Sunan Gunung Djati Bandung. Saya memiliki minat yang besar terhadap dunia pengembangan web (Web Development) dan perancangan antarmuka pengguna (UI/UX Design). Saat ini, saya masih dalam tahap aktif mengeksplorasi dan mempelajari teknologi dasar pembuatan website, mulai dari menyusun struktur kode yang rapi hingga merancang tampilan visual yang nyaman bagi pengguna. Sebagai seorang pembelajar, saya sadar masih banyak sekali hal dan teknologi baru yang harus saya kuasai. Oleh karena itu, website portofolio ini sengaja saya bangun dari awal sebagai jurnal digital pribadi. Tempat ini menjadi wadah untuk merapikan hasil latihan coding, mendokumentasikan proses belajar desain (seperti wireframing), serta mencatat pengalaman saya saat berkolaborasi dalam proyek kampus. Saya selalu percaya bahwa belajar adalah proses panjang, dan setiap proyek yang saya kerjakan adalah bagian dari langkah untuk terus berkembang.",
         tags: ["Learning", "Web Enthusiast", "Santai & Konsisten"],
         featured: true
       },
       {
         id: "hobi-motor",
         src: "assets/tampan.jpg",
-        alt: "Foto Motor Hobi Rafly",
+        alt: "axel",
         badge: "HOBI MOTORAN",
         tabName: "🏍️ Hobi & Motoran",
         title: "Hobi & Motor Kesayangan",
-        story: "Kalau lagi jenuh sama kodingan, biasanya saya suka luangin waktu buat motoran santai. Ini foto motor kesayangan yang sering dipakai jalan-jalan keliling cari udara segar biar pikiran balik jernih.",
+        story: "Di luar rutinitas mengulik kode dan merancang desain, ada kalanya menatap layar laptop berjam-jam membuat pikiran cukup jenuh. Kalau sudah begitu, saya biasanya meluangkan waktu untuk motoran santai. Ini adalah 'Axel', motor kesayangan yang selalu jadi andalan saya untuk jalan-jalan keliling mencari udara segar. Menjauh sejenak dari monitor dan sekadar riding menikmati jalanan sering kali menjadi cara paling ampuh untuk menjernihkan kembali pikiran, sebelum akhirnya siap kembali fokus memecahkan bug atau logika dalam kodingan.",
         tags: ["Motoran / Riding", "Refreshing & Chill"],
         featured: false
       }
