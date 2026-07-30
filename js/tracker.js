@@ -91,26 +91,97 @@ const VisitorTracker = (() => {
   }
 
   function detectDevice() {
-    const ua = navigator.userAgent;
+    const ua = navigator.userAgent || '';
+    
+    // 1. Device Type
     let deviceType = 'Desktop';
-    if (/Mobi|Android|iPhone|iPad|iPod/i.test(ua)) {
-      deviceType = 'Mobile / Tablet';
+    if (/Mobi|Android|iPhone|iPad|iPod|Touch/i.test(ua)) {
+      deviceType = 'Mobile';
     }
 
+    // 2. OS Detection (Check iOS/Android BEFORE Mac/Linux to avoid iPhone OS matching 'Mac')
     let os = 'Unknown OS';
-    if (ua.indexOf('Win') !== -1) os = 'Windows';
-    else if (ua.indexOf('Mac') !== -1) os = 'macOS';
-    else if (ua.indexOf('Android') !== -1) os = 'Android';
-    else if (ua.indexOf('iPhone') !== -1 || ua.indexOf('iPad') !== -1) os = 'iOS';
-    else if (ua.indexOf('Linux') !== -1) os = 'Linux';
+    if (/iPhone|iPad|iPod/i.test(ua)) {
+      os = 'iOS';
+    } else if (/Android/i.test(ua)) {
+      os = 'Android';
+    } else if (/Win/i.test(ua)) {
+      os = 'Windows';
+    } else if (/Macintosh|Mac OS/i.test(ua)) {
+      os = 'macOS';
+    } else if (/Linux/i.test(ua)) {
+      os = 'Linux';
+    }
 
+    // 3. Browser & In-App App Detection
     let browser = 'Browser';
-    if (ua.indexOf('Chrome') !== -1 && ua.indexOf('Edg') === -1) browser = 'Chrome';
-    else if (ua.indexOf('Safari') !== -1 && ua.indexOf('Chrome') === -1) browser = 'Safari';
-    else if (ua.indexOf('Firefox') !== -1) browser = 'Firefox';
-    else if (ua.indexOf('Edg') !== -1) browser = 'Edge';
+    if (/Instagram/i.test(ua)) {
+      browser = 'Instagram App';
+    } else if (/FBAN|FBAV/i.test(ua)) {
+      browser = 'Facebook App';
+    } else if (/TikTok/i.test(ua)) {
+      browser = 'TikTok App';
+    } else if (/WhatsApp/i.test(ua)) {
+      browser = 'WhatsApp App';
+    } else if (/Edg/i.test(ua)) {
+      browser = 'Edge';
+    } else if (/Chrome/i.test(ua) && !/Edg/i.test(ua)) {
+      browser = 'Chrome';
+    } else if (/Safari/i.test(ua) && !/Chrome/i.test(ua)) {
+      browser = 'Safari';
+    } else if (/Firefox/i.test(ua)) {
+      browser = 'Firefox';
+    }
 
     return { deviceType, os, browser, screenResolution: `${window.screen.width}x${window.screen.height}` };
+  }
+
+  function detectReferrer(ua) {
+    const ref = document.referrer ? document.referrer.toLowerCase() : '';
+    const isInstagramUA = /Instagram/i.test(ua);
+    const isFacebookUA = /FBAN|FBAV/i.test(ua);
+
+    if (isInstagramUA || ref.includes('instagram.com') || ref.includes('l.instagram.com')) {
+      return 'Instagram (Bio / Link IG)';
+    }
+    
+    if (isFacebookUA) {
+      return 'Facebook (In-App Browser)';
+    }
+
+    if (ref.includes('l.facebook.com') || ref.includes('lm.facebook.com') || ref.includes('m.facebook.com') || ref.includes('facebook.com')) {
+      return 'Instagram / Facebook (Meta Link)';
+    }
+
+    if (ref.includes('t.co') || ref.includes('twitter.com') || ref.includes('x.com')) {
+      return 'X / Twitter';
+    }
+
+    if (ref.includes('tiktok.com')) {
+      return 'TikTok';
+    }
+
+    if (ref.includes('linkedin.com') || ref.includes('lnkd.in')) {
+      return 'LinkedIn';
+    }
+
+    if (ref.includes('wa.me') || ref.includes('whatsapp.com')) {
+      return 'WhatsApp Share';
+    }
+
+    if (ref.includes('google.')) {
+      return 'Google Search';
+    }
+
+    if (ref) {
+      try {
+        return new URL(document.referrer).hostname;
+      } catch (e) {
+        return ref;
+      }
+    }
+
+    return 'Direct Link / Bio / Bookmark';
   }
 
   function removeRecentSelfLog() {
@@ -138,6 +209,7 @@ const VisitorTracker = (() => {
 
     const { to } = getUrlParams();
     const deviceInfo = detectDevice();
+    const referrerSource = detectReferrer(navigator.userAgent || '');
     
     // Prevent duplicate logs within 10 seconds for exact same session
     const lastVisitTime = sessionStorage.getItem('last_logged_visit');
@@ -164,43 +236,75 @@ const VisitorTracker = (() => {
       isPersonalLink: !!to,
       device: `${deviceInfo.deviceType} (${deviceInfo.os} - ${deviceInfo.browser})`,
       screen: deviceInfo.screenResolution,
-      referrer: document.referrer ? new URL(document.referrer).hostname : 'Direct Link / Social',
+      referrer: referrerSource,
       location: 'Mencari...'
     };
 
-    // Save initial visit log first
-    saveLogToStorage(visitData);
-
-    // Fetch IP Location asynchronously (fail-safe)
+    // Fetch accurate IP Location first before sending Telegram notification
     try {
-      const response = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(3000) });
-      if (response.ok) {
-        const data = await response.json();
-        const city = data.city || '';
-        const region = data.region_code || data.region || '';
-        const country = data.country_name || '';
-        visitData.location = [city, region, country].filter(Boolean).join(', ') || 'Lokasi tidak terdeteksi';
-        updateLogLocation(visitData.id, visitData.location);
-      }
+      visitData.location = await fetchVisitorLocation();
     } catch (e) {
-      // Fallback API if ipapi is blocked by adblock
-      try {
-        const fbRes = await fetch('https://ip-api.com/json/?fields=status,city,regionName,country', { signal: AbortSignal.timeout(2500) });
-        if (fbRes.ok) {
-          const fbData = await fbRes.json();
-          if (fbData.status === 'success') {
-            visitData.location = `${fbData.city}, ${fbData.country}`;
-            updateLogLocation(visitData.id, visitData.location);
-          }
-        }
-      } catch (err) {
-        visitData.location = 'Lokasi Terproteksi / AdBlock';
-        updateLogLocation(visitData.id, visitData.location);
-      }
+      visitData.location = 'Lokasi Terproteksi / Network Privacy';
     }
+
+    // Save visit log to storage
+    saveLogToStorage(visitData);
 
     // Send Real-Time Telegram Notification to Owner
     sendTelegramNotification(visitData);
+  }
+
+  async function fetchVisitorLocation() {
+    // Provider 1: ipwho.is (HTTPS, fast, highly accurate for Indonesia & global IPs)
+    try {
+      const res = await fetch('https://ipwho.is/', { signal: AbortSignal.timeout(3500) });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success) {
+          const city = data.city || '';
+          const region = data.region || '';
+          const country = data.country || '';
+          const isp = data.connection?.isp || data.isp || '';
+          const locParts = [city, region, country].filter(Boolean).join(', ');
+          if (locParts) {
+            return `${locParts}${isp ? ` (${isp})` : ''}`;
+          }
+        }
+      }
+    } catch (e) {}
+
+    // Provider 2: freeipapi.com (HTTPS fallback)
+    try {
+      const res = await fetch('https://freeipapi.com/api/json', { signal: AbortSignal.timeout(3500) });
+      if (res.ok) {
+        const data = await res.json();
+        const city = data.cityName || '';
+        const region = data.regionName || '';
+        const country = data.countryName || '';
+        const locParts = [city, region, country].filter(Boolean).join(', ');
+        if (locParts) return locParts;
+      }
+    } catch (e) {}
+
+    // Provider 3: ipapi.co (HTTPS fallback)
+    try {
+      const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(3000) });
+      if (res.ok) {
+        const data = await res.json();
+        if (!data.error) {
+          const city = data.city || '';
+          const region = data.region_code || data.region || '';
+          const country = data.country_name || '';
+          const org = data.org || '';
+          const locParts = [city, region, country].filter(Boolean).join(', ');
+          if (locParts) {
+            return `${locParts}${org ? ` (${org})` : ''}`;
+          }
+        }
+      }
+    } catch (e) {}
+
+    return 'Lokasi Tidak Terdeteksi / Network Privacy';
   }
 
   async function sendTelegramNotification(data) {

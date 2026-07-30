@@ -9,7 +9,7 @@ const TRANSLATIONS = {
     nav_home: "Beranda",
     nav_about: "Tentang Saya",
     nav_skills: "Skill & Belajar",
-    nav_contact: "Kontak",
+    nav_contact: "Media Sosial",
 
     hero_badge: "PORTOFOLIO • RAFLY AHMAD MUZAKI",
     hero_greeting: "Halo kawan! Saya ",
@@ -21,7 +21,7 @@ const TRANSLATIONS = {
     hero_bio: "Selamat datang di website portofolio pribadi saya. Tempat dokumentasi proses belajar web development dan hobi sehari-hari.",
     btn_skills: "⚡ Lihat Skill Saya",
     btn_about: "📸 Tentang Saya",
-    btn_contact: "📡 Hubungi Saya",
+    btn_contact: "🌐 Media Sosial",
 
     about_tag: "[ KISAH & HOBI ]",
     about_title_prefix: "Tentang ",
@@ -54,21 +54,13 @@ const TRANSLATIONS = {
       { name: "Tools & Ecosystem Lainnya", desc: "Baru tahu nama-nama toolsnya dan masih proses baca-baca." }
     ],
 
-    contact_tag: "[ HUBUNGI & SOSIAL MEDIA ]",
-    contact_title_prefix: "Hubungi ",
-    contact_title_highlight: "Rafly Ahmad Muzaki",
-    contact_subtitle: "Anda bisa kirim pesan langsung via WhatsApp atau cek jejaring sosial media saya di bawah:",
-    contact_wa_badge: "🟢 KONTAK UTAMA (WHATSAPP)",
-    contact_wa_label: "WhatsApp Direct",
+    contact_tag: "[ MEDIA SOSIAL & JEJARING ]",
+    contact_title_prefix: "Jejaring & ",
+    contact_title_highlight: "Media Sosial",
+    contact_subtitle: "Temukan dan terhubung dengan Rafly Ahmad Muzaki melalui akun media sosial & platform resmi di bawah ini:",
+    contact_wa_badge: "🌐 MEDIA SOSIAL & JEJARING",
+    contact_wa_label: "Social Media",
     contact_social_badge: "🌐 JEJARING & MEDSOS",
-
-    contact_form_name_label: "NAMA ANDA",
-    contact_form_name_ph: "Siapa nama Anda?",
-    contact_form_email_label: "EMAIL ANDA",
-    contact_form_email_ph: "emailanda@domain.com",
-    contact_form_msg_label: "PESAN / CATATAN",
-    contact_form_msg_ph: "Tuliskan pesan Anda di sini...",
-    contact_form_btn: "Kirim Pesan via WA Direct ⚡",
 
     footer_copy: "© 2026 Rafly Ahmad Muzaki • Web Portofolio Santai & Futuristic",
     footer_status_label: "Status: ",
@@ -79,7 +71,7 @@ const TRANSLATIONS = {
     nav_home: "Home",
     nav_about: "About Me",
     nav_skills: "Skills & Learning",
-    nav_contact: "Contact",
+    nav_contact: "Social Media",
 
     hero_badge: "PORTFOLIO • RAFLY AHMAD MUZAKI",
     hero_greeting: "Hello friends! I'm ",
@@ -91,7 +83,7 @@ const TRANSLATIONS = {
     hero_bio: "Welcome to my personal portfolio website! A place documenting my web development learning process and daily hobbies.",
     btn_skills: "⚡ View My Skills",
     btn_about: "📸 About Me",
-    btn_contact: "📡 Contact Me",
+    btn_contact: "🌐 Social Media",
 
     about_tag: "[ STORIES & HOBBIES ]",
     about_title_prefix: "About ",
@@ -124,21 +116,13 @@ const TRANSLATIONS = {
       { name: "Tools & Other Ecosystems", desc: "Learning tool names and reading documentation." }
     ],
 
-    contact_tag: "[ CONTACT & SOCIAL MEDIA ]",
-    contact_title_prefix: "Contact ",
-    contact_title_highlight: "Rafly Ahmad Muzaki",
-    contact_subtitle: "You can send me a message directly via WhatsApp or check out my social networks below:",
-    contact_wa_badge: "🟢 MAIN CONTACT (WHATSAPP)",
-    contact_wa_label: "WhatsApp Direct",
+    contact_tag: "[ SOCIAL MEDIA & NETWORKS ]",
+    contact_title_prefix: "Networks & ",
+    contact_title_highlight: "Social Media",
+    contact_subtitle: "Find and connect with Rafly Ahmad Muzaki through official social platforms below:",
+    contact_wa_badge: "🌐 SOCIAL MEDIA & NETWORKS",
+    contact_wa_label: "Social Media",
     contact_social_badge: "🌐 SOCIAL NETWORKS",
-
-    contact_form_name_label: "YOUR NAME",
-    contact_form_name_ph: "What is your name?",
-    contact_form_email_label: "YOUR EMAIL",
-    contact_form_email_ph: "youremail@domain.com",
-    contact_form_msg_label: "MESSAGE / NOTES",
-    contact_form_msg_ph: "Write your message here...",
-    contact_form_btn: "Send Message via WA Direct ⚡",
 
     footer_copy: "© 2026 Rafly Ahmad Muzaki • Relaxed & Futuristic Web Portfolio",
     footer_status_label: "Status: ",
