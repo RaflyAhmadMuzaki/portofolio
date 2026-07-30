@@ -213,4 +213,47 @@ body {
   position: static !important;
 }
 
+/* ==========================================================================
+   Cutout Hologram Styling for Transparent PNGs
+   ========================================================================== */
+.cutout-hologram-wrapper {
+  background: radial-gradient(circle at 50% 60%, rgba(0, 240, 255, 0.25) 0%, rgba(112, 0, 255, 0.18) 50%, rgba(7, 9, 19, 0.95) 90%) !important;
+  position: relative;
+}
+
+.cutout-hologram-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 240, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.12) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.img-cutout-shadow {
+  position: relative;
+  z-index: 2;
+  object-fit: contain !important;
+  object-position: bottom center !important;
+  padding: 12px 12px 0 12px;
+  filter: drop-shadow(0 0 18px rgba(0, 240, 255, 0.6)) drop-shadow(0 10px 25px rgba(112, 0, 255, 0.5));
+  animation: cutoutFloat 4s ease-in-out infinite alternate;
+}
+
+@keyframes cutoutFloat {
+  0% {
+    transform: translateY(0px) scale(0.98);
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.5)) drop-shadow(0 8px 20px rgba(112, 0, 255, 0.4));
+  }
+  100% {
+    transform: translateY(-8px) scale(1);
+    filter: drop-shadow(0 0 25px rgba(0, 240, 255, 0.8)) drop-shadow(0 14px 30px rgba(112, 0, 255, 0.7));
+  }
+}
+
 

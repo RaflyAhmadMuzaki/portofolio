@@ -27,12 +27,12 @@ const PORTFOLIO_CONFIG = {
     photos: [
       {
         id: "profil-rafly",
-        src: "assets/dem.jpg",
+        src: "assets/remove.png",
         alt: "Foto Profil Rafly Ahmad Muzaki",
         badge: "TENTANG RAFLY",
         tabName: "📸 Profil Saya",
         title: "Tentang Rafly Ahmad Muzaki",
-        story: "Halo! saya Rafly Ahmad Muzaki, mahasiswa S1 Teknik Informatika di UIN Sunan Gunung Djati Bandung. Lagi fokus belajar dan ngembangin skill di bidang Web Development serta UI/UX Design. Saat ini masih terus eksplor teknologi web, mulai dari ngoding sampai bikin tampilan yang enak dilihat dan nyaman dipakai. Website portofolio ini saya bikin sebagai tempat buat nyimpen hasil belajar, dokumentasi proyek, dan perjalanan selama ngembangin skill. Masih banyak yang perlu dipelajari, tapi saya percaya setiap proyek adalah langkah kecil buat jadi lebih baik.",
+        story: "Halo! Saya Rafly Ahmad Muzaki, mahasiswa S1 Teknik Informatika di UIN Sunan Gunung Djati Bandung. Lagi fokus belajar dan ngembangin skill di bidang Web Development serta UI/UX Design. Saat ini masih terus eksplor teknologi web, mulai dari ngoding sampai bikin tampilan yang enak dilihat dan nyaman dipakai.\n\nWebsite portofolio ini saya bikin sebagai tempat buat nyimpen hasil belajar, dokumentasi proyek, dan perjalanan selama ngembangin skill. Masih banyak yang perlu dipelajari, tapi saya percaya setiap proyek adalah langkah kecil buat jadi lebih baik.",
         tags: ["Learning", "Web Enthusiast", "Santai & Konsisten"],
         featured: true
       },
@@ -43,7 +43,7 @@ const PORTFOLIO_CONFIG = {
         badge: "HOBI MOTORAN",
         tabName: "🏍️ Hobi & Motoran",
         title: "Hobi & Motor Kesayangan",
-        story: "Di luar dunia coding dan desain, saya juga menyempatkan waktu untuk recharge. Biasanya saya motoran santai bersama 'Axel', motor kesayangan yang selalu menemani mencari udara segar. Bagi saya, riding adalah cara sederhana untuk refreshing, menjernihkan pikiran, dan kembali fokus saat mengerjakan proyek atau memecahkan bug.",
+        story: "Di luar dunia coding dan desain, saya juga menyempatkan waktu untuk recharge. Biasanya saya motoran santai bersama Axel, motor kesayangan yang selalu menemani mencari udara segar. Bagi saya, riding adalah cara sederhana untuk refreshing, menjernihkan pikiran, dan kembali fokus saat mengerjakan proyek atau memecahkan bug.",
         tags: ["Motoran / Riding", "Refreshing & Chill"],
         featured: false
       }

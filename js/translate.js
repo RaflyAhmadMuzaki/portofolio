@@ -31,13 +31,13 @@ const TRANSLATIONS = {
     photo1_tab: "📸 Profil Saya",
     photo1_badge: "TENTANG RAFLY",
     photo1_title: "Tentang Rafly Ahmad Muzaki",
-    photo1_story: "Halo! Perkenalkan, nama saya Rafly Ahmad Muzaki. Saat ini, saya adalah mahasiswa aktif program studi S1 Teknik Informatika di UIN Sunan Gunung Djati Bandung. Saya memiliki minat yang besar terhadap dunia pengembangan web (Web Development) dan perancangan antarmuka pengguna (UI/UX Design). Saat ini, saya masih dalam tahap aktif mengeksplorasi dan mempelajari teknologi dasar pembuatan website, mulai dari menyusun struktur kode yang rapi hingga merancang tampilan visual yang nyaman bagi pengguna. Sebagai seorang pembelajar, saya sadar masih banyak sekali hal dan teknologi baru yang harus saya kuasai. Oleh karena itu, website portofolio ini sengaja saya bangun dari awal sebagai jurnal digital pribadi. Tempat ini menjadi wadah untuk merapikan hasil latihan coding, mendokumentasikan proses belajar desain (seperti wireframing), serta mencatat pengalaman saya saat berkolaborasi dalam proyek kampus. Saya selalu percaya bahwa belajar adalah proses panjang, dan setiap proyek yang saya kerjakan adalah bagian dari langkah untuk terus berkembang.",
+    photo1_story: "Halo! Saya Rafly Ahmad Muzaki, mahasiswa S1 Teknik Informatika di UIN Sunan Gunung Djati Bandung. Lagi fokus belajar dan ngembangin skill di bidang Web Development serta UI/UX Design. Saat ini masih terus eksplor teknologi web, mulai dari ngoding sampai bikin tampilan yang enak dilihat dan nyaman dipakai.\n\nWebsite portofolio ini saya bikin sebagai tempat buat nyimpen hasil belajar, dokumentasi proyek, dan perjalanan selama ngembangin skill. Masih banyak yang perlu dipelajari, tapi saya percaya setiap proyek adalah langkah kecil buat jadi lebih baik.",
     photo1_tags: ["Learning", "Web Enthusiast", "Santai & Konsisten"],
 
     photo2_tab: "🏍️ Hobi & Motoran",
     photo2_badge: "HOBI MOTORAN",
     photo2_title: "Hobi & Motor Kesayangan",
-    photo2_story: "Di luar rutinitas mengulik kode dan merancang desain, ada kalanya menatap layar laptop berjam-jam membuat pikiran cukup jenuh. Kalau sudah begitu, saya biasanya meluangkan waktu untuk motoran santai. Ini adalah 'Axel', motor kesayangan yang selalu jadi andalan saya untuk jalan-jalan keliling mencari udara segar. Menjauh sejenak dari monitor dan sekadar riding menikmati jalanan sering kali menjadi cara paling ampuh untuk menjernihkan kembali pikiran, sebelum akhirnya siap kembali fokus memecahkan bug atau logika dalam kodingan.",
+    photo2_story: "Di luar dunia coding dan desain, saya juga menyempatkan waktu untuk recharge. Biasanya saya motoran santai bersama Axel, motor kesayangan yang selalu menemani mencari udara segar. Bagi saya, riding adalah cara sederhana untuk refreshing, menjernihkan pikiran, dan kembali fokus saat mengerjakan proyek atau memecahkan bug.",
     photo2_tags: ["Motoran / Riding", "Refreshing & Chill"],
 
     skills_tag: "[ SKILL & PROGRESS ]",
@@ -61,6 +61,13 @@ const TRANSLATIONS = {
     contact_wa_badge: "🌐 MEDIA SOSIAL & JEJARING",
     contact_wa_label: "Social Media",
     contact_social_badge: "🌐 JEJARING & MEDSOS",
+
+    contact_ig_desc: "Akun Instagram Pribadi & Kegiatan Harian",
+    contact_ig_btn: "Ikuti di Instagram",
+    contact_li_desc: "Profil Profesional & Koneksi Karir",
+    contact_li_btn: "Hubungkan di LinkedIn",
+    contact_gh_desc: "Repository Kode & Proyek Belajar",
+    contact_gh_btn: "Lihat Repository",
 
     footer_copy: "© 2026 Rafly Ahmad Muzaki • Web Portofolio Santai & Futuristic",
     footer_status_label: "Status: ",
@@ -93,13 +100,13 @@ const TRANSLATIONS = {
     photo1_tab: "📸 My Profile",
     photo1_badge: "ABOUT RAFLY",
     photo1_title: "About Rafly Ahmad Muzaki",
-    photo1_story: "Hello! My name is Rafly Ahmad Muzaki. Currently, I am an active undergraduate Informatics Engineering student at UIN Sunan Gunung Djati Bandung. I have a strong interest in Web Development and UI/UX Design. Currently, I am actively exploring foundational web technologies, from writing clean code structures to crafting intuitive user interfaces. I believe learning is a continuous journey, and this portfolio serves as my digital journal to document my progress.",
+    photo1_story: "Hello! I am Rafly Ahmad Muzaki, an undergraduate Informatics Engineering student at UIN Sunan Gunung Djati Bandung. Currently focusing on learning and developing skills in Web Development and UI/UX Design. I am actively exploring web technology, from coding to creating visually appealing and user-friendly interfaces.\n\nI built this portfolio website as a space to store my learning outcomes, project documentation, and skill development journey. There is still much to learn, but I believe every project is a small step toward becoming better.",
     photo1_tags: ["Learning", "Web Enthusiast", "Consistent & Relaxed"],
 
     photo2_tab: "🏍️ Hobby & Riding",
     photo2_badge: "MOTORCYCLE HOBBY",
     photo2_title: "Hobby & Beloved Motorcycle",
-    photo2_story: "Outside of coding and designing, spending hours in front of a laptop can be exhausting. When that happens, I take time for casual motorcycle riding. Meet 'Axel', my beloved motorcycle that is always my go-to for cruising around to catch fresh air. Taking a break from the monitor often refreshes my mind before jumping back to solve code logic or bugs.",
+    photo2_story: "Outside the world of coding and design, I also take time to recharge. I usually enjoy casual motorcycle riding with Axel, my beloved bike that always accompanies me to get fresh air. For me, riding is a simple way to refresh, clear my mind, and regain focus when working on projects or fixing bugs.",
     photo2_tags: ["Riding / Cruising", "Refreshing & Chill"],
 
     skills_tag: "[ SKILLS & PROGRESS ]",
@@ -123,6 +130,13 @@ const TRANSLATIONS = {
     contact_wa_badge: "🌐 SOCIAL MEDIA & NETWORKS",
     contact_wa_label: "Social Media",
     contact_social_badge: "🌐 SOCIAL NETWORKS",
+
+    contact_ig_desc: "Personal Instagram & Daily Activities",
+    contact_ig_btn: "Follow on Instagram",
+    contact_li_desc: "Professional Profile & Career Connections",
+    contact_li_btn: "Connect on LinkedIn",
+    contact_gh_desc: "Code Repositories & Learning Projects",
+    contact_gh_btn: "View Repository",
 
     footer_copy: "© 2026 Rafly Ahmad Muzaki • Relaxed & Futuristic Web Portfolio",
     footer_status_label: "Status: ",
@@ -155,13 +169,13 @@ const TRANSLATIONS = {
     photo1_tab: "📸 プロフィール",
     photo1_badge: "ラフリーについて",
     photo1_title: "Rafly Ahmad Muzakiについて",
-    photo1_story: "こんにちは！Rafly Ahmad Muzakiと申します。現在、UIN Sunan Gunung Djati Bandungで情報工学を専攻している大学生です。Web開発とUI/UXデザインに強い関心を持っています。基礎的なWeb技術の習得から、洗練されたユーザーインターフェースのデザインまで探求しています。学びは継続的な旅であり、このポートフォリオは成長を記録するデジタル日誌です。",
+    photo1_story: "こんにちは！Rafly Ahmad Muzakiです。UIN Sunan Gunung Djati BandungのWeb開発およびUI/UXデザインを学んでいる情報工学専攻の大学生です。コーディングから使いやすく美しいインターフェースのデザインまで、Web技術を継続的に探求しています。\n\nこのポートフォリオサイトは、学習成果、プロジェクトの記録、スキル開発のプロセスを保管するデジタルログとして作成しました。学ぶべきことはまだたくさんありますが、すべてのプロジェクトが成長のための大切な一歩だと信じています。",
     photo1_tags: ["学習中", "Webファン", "着実＆リラックス"],
 
     photo2_tab: "🏍️ 趣味＆バイク",
     photo2_badge: "バイク趣味",
     photo2_title: "趣味と愛車",
-    photo2_story: "コーディングやデザインの合間に、愛車の「Axel」でバイクライディングを楽しんでいます。PC画面から離れて風を感じることで、頭をリフレッシュし、再び集中してコードに向き合うことができます。",
+    photo2_story: "コーディングやデザイン以外の時間には、リチャージのための時間を大切にしています。愛車の「Axel」と一緒にゆったりとバイクに乗って新鮮な空気を感じています。ツーリングは、頭をリフレッシュし、新しいプロジェクトやバグ修正に再び集中するためのシンプルで効果的な方法です。",
     photo2_tags: ["バイクライディング", "リフレッシュ＆リラックス"],
 
     skills_tag: "[ スキルと進捗 ]",
@@ -185,6 +199,13 @@ const TRANSLATIONS = {
     contact_wa_badge: "🟢 メイン連絡先 (WHATSAPP)",
     contact_wa_label: "WhatsApp Direct",
     contact_social_badge: "🌐 SNS & ネットワーク",
+
+    contact_ig_desc: "個人Instagram＆日常のアクティビティ",
+    contact_ig_btn: "Instagramでフォロー",
+    contact_li_desc: "プロフェッショナルプロフィール＆キャリア",
+    contact_li_btn: "LinkedInでつながる",
+    contact_gh_desc: "コードリポジトリ＆学習プロジェクト",
+    contact_gh_btn: "リポジトリを見る",
 
     contact_form_name_label: "お名前",
     contact_form_name_ph: "お名前を入力してください...",
@@ -225,13 +246,13 @@ const TRANSLATIONS = {
     photo1_tab: "📸 프로필",
     photo1_badge: "라플리 소개",
     photo1_title: "Rafly Ahmad Muzaki 소개",
-    photo1_story: "안녕하세요! Rafly Ahmad Muzaki입니다. 현재 인도네시아 UIN Sunan Gunung Djati Bandung에서 정보공학을 전공하고 있습니다. 웹 개발과 UI/UX 디자인에 큰 흥미를 느끼며 기초 웹 기술과 사용자 인터페이스 탐구를 진행 중입니다.",
+    photo1_story: "안녕하세요! 저는 인도네시아 UIN Sunan Gunung Djati Bandung에서 정보공학을 전공하는 Rafly Ahmad Muzaki입니다. 현재 웹 개발 및 UI/UX 디자인 분야의 기술 학습과 향상에 집중하고 있습니다. 코드 작성부터 직관적이고 편안한 웹 인터페이스 제작까지 지속적으로 탐구 중입니다.\n\n이 포트폴리오 웹사이트는 학습 결과, 프로젝트 기록, 기술 개발 여정을 저장하는 공간으로 제작했습니다. 아직 배울 것이 많지만, 모든 프로젝트가 더 나아지기 위한 소중한 한 걸음이라고 믿습니다.",
     photo1_tags: ["학습 중", "웹 애호가", "꾸준함"],
 
     photo2_tab: "🏍️ 오토바이 취미",
     photo2_badge: "오토바이 취미",
     photo2_title: "취미 & 소중한 오토바이",
-    photo2_story: "코딩과 디자인 시간 외에는 애마 'Axel'을 타고 드라이브를 즐기며 머리를 식히곤 합니다. 모니터에서 벗어나 바람을 쐬는 것은 코딩에 다시 집중하는 데 큰 도움이 됩니다.",
+    photo2_story: "코딩과 디자인 영역 외에도 재충전을 위한 시간을 가집니다. 보통은 저의 소중한 오토바이 'Axel'과 함께 느긋하게 라이딩을 즐기며 신선한 공기를 마십니다. 라이딩은 기분을 전환하고 머리를 식히며, 다시 프로젝트 작업이나 버그 해결에 집중할 수 있게 해주는 간단한 방법입니다.",
     photo2_tags: ["라이딩", "휴식 & 힐링"],
 
     skills_tag: "[ 기술 & 진행 상황 ]",
@@ -255,6 +276,13 @@ const TRANSLATIONS = {
     contact_wa_badge: "🟢 메인 연락처 (WHATSAPP)",
     contact_wa_label: "WhatsApp Direct",
     contact_social_badge: "🌐 소셜 네트워크",
+
+    contact_ig_desc: "개인 Instagram 및 일상 활동",
+    contact_ig_btn: "Instagram 팔로우",
+    contact_li_desc: "전문 프로필 및 경력 네트워크",
+    contact_li_btn: "LinkedIn에서 연결",
+    contact_gh_desc: "코드 리포지토리 및 학습 프로젝트",
+    contact_gh_btn: "리포지토리 보기",
 
     contact_form_name_label: "이름",
     contact_form_name_ph: "이름을 입력하세요...",
@@ -295,13 +323,13 @@ const TRANSLATIONS = {
     photo1_tab: "📸 个人简介",
     photo1_badge: "关于 RAFLY",
     photo1_title: "关于 Rafly Ahmad Muzaki",
-    photo1_story: "你好！我叫 Rafly Ahmad Muzaki，目前是 UIN Sunan Gunung Djati Bandung 信息工程专业本科生。我对 Web 开发和 UI/UX 设计有着浓厚的兴趣。目前正在积极学习网页开发的基础技术。",
+    photo1_story: "你好！我是 Rafly Ahmad Muzaki，目前是 UIN Sunan Gunung Djati Bandung 信息工程专业的本科生。正在专注于学习和提升 Web 开发与 UI/UX 设计方面的技能。目前一直在不断探索 Web 技术，从编写代码到打造美观易用的界面。\n\n建立这个作品集网站，是为了保存我的学习成果、项目文档以及技能提升的过程。虽然还有很多需要学习的内容，但我相信每一个项目都是变得更好的坚实一步。",
     photo1_tags: ["学习中", "Web爱好者", "踏实稳定"],
 
     photo2_tab: "🏍️ 摩托车爱好",
     photo2_badge: "摩托车爱好",
     photo2_title: "爱好 & 挚爱摩托",
-    photo2_story: "在编写代码和设计界面之外，我也喜欢骑着我的爱车“Axel”外出散心，放松心情，这有助于我在重返代码时能更有专注力。",
+    photo2_story: "在代码和设计的世界之外，我也留出时间来充电。通常我会骑着我心爱的摩托车“Axel”惬意散心，呼吸新鲜空气。对我来说，骑行是一种简单的放松方式，能让我清空大脑，重新专注于项目开发与 Bug 修复。",
     photo2_tags: ["骑行散心", "放松 & 休闲"],
 
     skills_tag: "[ 技能与进度 ]",
@@ -325,6 +353,13 @@ const TRANSLATIONS = {
     contact_wa_badge: "🟢 主要联系方式 (WHATSAPP)",
     contact_wa_label: "WhatsApp 直连",
     contact_social_badge: "🌐 社交网络",
+
+    contact_ig_desc: "个人 Instagram 与日常活动",
+    contact_ig_btn: "在 Instagram 上关注",
+    contact_li_desc: "职业履历与职场社交",
+    contact_li_btn: "在 LinkedIn 上建立联系",
+    contact_gh_desc: "代码仓库与学习项目",
+    contact_gh_btn: "查看代码仓库",
 
     contact_form_name_label: "您的姓名",
     contact_form_name_ph: "请输入您的姓名...",
@@ -365,13 +400,13 @@ const TRANSLATIONS = {
     photo1_tab: "📸 Mein Profil",
     photo1_badge: "ÜBER RAFLY",
     photo1_title: "Über Rafly Ahmad Muzaki",
-    photo1_story: "Hallo! Mein Name ist Rafly Ahmad Muzaki. Derzeit bin ich aktiver Student der Informatik an der UIN Sunan Gunung Djati Bandung. Ich habe ein großes Interesse an Webentwicklung und UI/UX-Design. Derzeit erkunde ich grundlegende Webtechnologien von sauberem Code bis hin zu intuitiven Benutzeroberflächen.",
+    photo1_story: "Hallo! Ich bin Rafly Ahmad Muzaki, Informatikstudent an der UIN Sunan Gunung Djati Bandung. Derzeit konzentriere ich mich darauf, meine Fähigkeiten in Webentwicklung und UI/UX-Design auszubauen. Ich erkunde kontinuierlich Webtechnologien von sauberem Code bis hin zu benutzerfreundlichen Interfaces.\n\nDiese Portfolio-Website dient als Ort zur Dokumentation meiner Lernfortschritte, Projekte und Fähigkeiten. Es gibt noch viel zu lernen, aber ich glaube, jedes Projekt ist ein kleiner Schritt nach vorne.",
     photo1_tags: ["Lernen", "Web-Enthusiast", "Konsequent & Entspannt"],
 
     photo2_tab: "🏍️ Hobby & Motorrad",
     photo2_badge: "MOTORRAD-HOBBY",
     photo2_title: "Hobby & Geliebtes Motorrad",
-    photo2_story: "Außerhalb von Code und Design verbringe ich Zeit mit entspannten Motorradfahrten mit meinem geliebten Motorrad 'Axel'. Eine Pause vom Monitor zu machen, erfrischt den Geist für neue Herausforderungen.",
+    photo2_story: "Abseits von Code und Design nehme ich mir Zeit zum Auftanken. Meistens fahre ich entspannt mit Axel, meinem geliebten Motorrad. Das Fahren ist für mich eine einfache Möglichkeit, den Kopf frei zu bekommen und mich wieder voller Fokus auf Projekte und Bugs zu konzentrieren.",
     photo2_tags: ["Motorradfahren", "Erfrischend & Chill"],
 
     skills_tag: "[ FÄHIGKEITEN & FORTSCHRITT ]",
@@ -395,6 +430,13 @@ const TRANSLATIONS = {
     contact_wa_badge: "🟢 HAUPTKONTAKT (WHATSAPP)",
     contact_wa_label: "WhatsApp Direkt",
     contact_social_badge: "🌐 SOZIALE NETZWERKE",
+
+    contact_ig_desc: "Persönliches Instagram & Tägliche Aktivitäten",
+    contact_ig_btn: "Auf Instagram folgen",
+    contact_li_desc: "Berufliches Profil & Karriere-Netzwerk",
+    contact_li_btn: "Auf LinkedIn vernetzen",
+    contact_gh_desc: "Code-Repositories & Lernprojekte",
+    contact_gh_btn: "Repositories ansehen",
 
     contact_form_name_label: "IHR NAME",
     contact_form_name_ph: "Wie heißen Sie?",
@@ -435,13 +477,13 @@ const TRANSLATIONS = {
     photo1_tab: "📸 Mi Perfil",
     photo1_badge: "SOBRE RAFLY",
     photo1_title: "Sobre Rafly Ahmad Muzaki",
-    photo1_story: "¡Hola! Mi nombre es Rafly Ahmad Muzaki. Actualmente soy estudiante universitario de Ingeniería Informática en la UIN Sunan Gunung Djati Bandung. Tengo un gran interés en el desarrollo web y el diseño UI/UX.",
+    photo1_story: "¡Hola! Soy Rafly Ahmad Muzaki, estudiante de Ingeniería Informática en la UIN Sunan Gunung Djati Bandung. Me enfoco en aprender y desarrollar habilidades en Desarrollo Web y Diseño UI/UX. Exploro activamente las tecnologías web, desde programar hasta crear interfaces atractivas y cómodas de usar.\n\nCreé este sitio web de portafolio para guardar mis aprendizajes, documentación de proyectos y mi trayectoria. Aún queda mucho por aprender, pero creo que cada proyecto es un pequeño paso para mejorar.",
     photo1_tags: ["Aprendizaje", "Entusiasta Web", "Constante y Relajado"],
 
     photo2_tab: "🏍️ Pasatiempo y Motos",
     photo2_badge: "HOBBY DE MOTOS",
     photo2_title: "Hobby y Mi Moto Querida",
-    photo2_story: "Fuera de programar y diseñar, me gusta salir a pasear en mi querida motocicleta 'Axel'. Tomarme un descanso de la pantalla me ayuda a refrescar la mente para resolver nuevos desafíos de código.",
+    photo2_story: "Fuera de la programación y el diseño, me tomo un tiempo para recargar energías. Suelo salir a rodar tranquilamente con Axel, mi querida moto que me acompaña a tomar aire fresco. Para mí, rodar es una forma sencilla de despejar la mente y volver a enfocarme al trabajar en proyectos o solucionar bugs.",
     photo2_tags: ["Paseo en Moto", "Refrescante y Tranquilo"],
 
     skills_tag: "[ HABILIDADES Y PROGRESO ]",
@@ -465,6 +507,13 @@ const TRANSLATIONS = {
     contact_wa_badge: "🟢 CONTACTO PRINCIPAL (WHATSAPP)",
     contact_wa_label: "WhatsApp Directo",
     contact_social_badge: "🌐 REDES SOCIALES",
+
+    contact_ig_desc: "Cuenta personal de Instagram y actividades diarias",
+    contact_ig_btn: "Seguir en Instagram",
+    contact_li_desc: "Perfil profesional y conexiones de carrera",
+    contact_li_btn: "Conectar en LinkedIn",
+    contact_gh_desc: "Repositorios de código y proyectos de aprendizaje",
+    contact_gh_btn: "Ver repositorios",
 
     contact_form_name_label: "TU NOMBRE",
     contact_form_name_ph: "¿Cuál es tu nombre?",
@@ -505,13 +554,13 @@ const TRANSLATIONS = {
     photo1_tab: "📸 Mon Profil",
     photo1_badge: "À PROPOS DE RAFLY",
     photo1_title: "À propos de Rafly Ahmad Muzaki",
-    photo1_story: "Bonjour ! Je m'appelle Rafly Ahmad Muzaki. Actuellement étudiant en informatique à l'UIN Sunan Gunung Djati Bandung. Je me passionne pour le développement web et le design UI/UX.",
+    photo1_story: "Bonjour ! Je suis Rafly Ahmad Muzaki, étudiant en informatique à l'UIN Sunan Gunung Djati Bandung. Je me concentre actuellement sur l'apprentissage du développement Web et du design UI/UX, de la programmation à la création d'interfaces agréables et intuitives.\n\nJ'ai créé ce portfolio pour conserver mes acquis, la documentation de mes projets et mon parcours d'apprentissage. Il me reste beaucoup à apprendre, mais je crois que chaque projet est un pas de plus vers l'amélioration.",
     photo1_tags: ["Apprentissage", "Passionné du Web", "Régulier & Relax"],
 
     photo2_tab: "🏍️ Passion & Moto",
     photo2_badge: "PASSION MOTO",
     photo2_title: "Passion & Ma Moto Préférée",
-    photo2_story: "En dehors du code, j'aime rouler à moto avec ma fidèle 'Axel'. Prendre l'air loin de l'écran me permet de me vider l'esprit avant de revenir résoudre des bugs.",
+    photo2_story: "En dehors du code et du design, je prends le temps de me ressourcer. Je fais généralement de simples balades à moto avec Axel, ma moto préférée. Rouler est pour moi un moyen simple de me rafraîchir l'esprit et de retrouver ma concentration pour résoudre des bugs ou travailler sur des projets.",
     photo2_tags: ["Balade à moto", "Rafraîchissant & Chill"],
 
     skills_tag: "[ COMPÉTENCES & PROGRÈS ]",
@@ -535,6 +584,13 @@ const TRANSLATIONS = {
     contact_wa_badge: "🟢 CONTACT PRINCIPAL (WHATSAPP)",
     contact_wa_label: "WhatsApp Direct",
     contact_social_badge: "🌐 RÉSEAUX SOCIAUX",
+
+    contact_ig_desc: "Compte Instagram personnel & activités quotidiennes",
+    contact_ig_btn: "Suivre sur Instagram",
+    contact_li_desc: "Profil professionnel & réseau de carrière",
+    contact_li_btn: "Se connecter sur LinkedIn",
+    contact_gh_desc: "Dépôts de code & projets d'apprentissage",
+    contact_gh_btn: "Voir les dépôts",
 
     contact_form_name_label: "VOTRE NOM",
     contact_form_name_ph: "Quel est votre nom ?",
@@ -575,13 +631,13 @@ const TRANSLATIONS = {
     photo1_tab: "📸 Мой Профиль",
     photo1_badge: "О RAFLY",
     photo1_title: "О Рафли Ахмаде Музаки",
-    photo1_story: "Привет! Меня зовут Рафли Ахмад Музаки. В настоящее время я являюсь студентом факультета информатики в UIN Sunan Gunung Djati Bandung. Проявляю большой интерес к веб-разработке и UI/UX дизайну.",
+    photo1_story: "Привет! Я Рафли Ахмад Музаки, студент факультета информатики в UIN Sunan Gunung Djati Bandung. В настоящее время я сосредоточен на изучении и развитии навыков в области веб-разработки и UI/UX дизайна — от написания кода до создания красивых и удобных интерфейсов.\n\nЯ создал этот портфолио-сайт как место для сохранения результатов обучения, документации проектов и истории своего развития. Многое еще предстоит узнать, но я верю, что каждый проект — это небольшой шаг к лучшему.",
     photo1_tags: ["Обучение", "Веб-энтузиаст", "Постоянство"],
 
     photo2_tab: "🏍️ Хобби и Мотоциклы",
     photo2_badge: "МОТО-ХОББИ",
     photo2_title: "Хобби и Любимый Мотоцикл",
-    photo2_story: "Помимо написания кода, я люблю кататься на своем любимом мотоцикле 'Axel'. Перерыв от монитора помогает освежить мысли и с новыми силами решать задачи по программированию.",
+    photo2_story: "Вне мира кода и дизайна я также нахожу время для перезагрузки. Обычно я отправляюсь на спокойную прогулку на моем любимом мотоцикле Axel, который всегда помогает мне подышать свежим воздухом. Поездки — это простой способ освежить мысли и снова сосредоточиться на проектах и исправлении багов.",
     photo2_tags: ["Мотопоездки", "Отдых и Релакс"],
 
     skills_tag: "[ НАВЫКИ И ПРОГРЕСС ]",
@@ -605,6 +661,13 @@ const TRANSLATIONS = {
     contact_wa_badge: "🟢 ОСНОВНОЙ КОНТАКТ (WHATSAPP)",
     contact_wa_label: "WhatsApp Прямой",
     contact_social_badge: "🌐 СОЦСЕТИ И СВЯЗЬ",
+
+    contact_ig_desc: "Личный аккаунт Instagram и повседневность",
+    contact_ig_btn: "Читать в Instagram",
+    contact_li_desc: "Профессиональный профиль и карьеры",
+    contact_li_btn: "Связаться в LinkedIn",
+    contact_gh_desc: "Репозитории кода и учебные проекты",
+    contact_gh_btn: "Посмотреть репозитории",
 
     contact_form_name_label: "ВАШЕ ИМЯ",
     contact_form_name_ph: "Как вас зовут?",

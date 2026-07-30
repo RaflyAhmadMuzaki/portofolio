@@ -19,7 +19,7 @@ const ASSETS_TO_CACHE = [
   './js/main.js',
   './manifest.json',
   './assets/bre.jpg',
-  './assets/dem.jpg',
+  './assets/remove.png',
   './assets/tampan.jpg'
 ];
 

@@ -93,7 +93,8 @@ function initAboutSection() {
 
   if (!mainImage || photos.length === 0) return;
 
-  let currentPhoto = photos.find(p => p.featured) || photos[0];
+  let currentPhoto = (window.activeAboutPhotoId && photos.find(p => p.id === window.activeAboutPhotoId)) || photos.find(p => p.featured) || photos[0];
+  window.activeAboutPhotoId = currentPhoto.id;
   updateAboutDisplay(currentPhoto);
 
   if (thumbsContainer) {
@@ -114,6 +115,7 @@ function initAboutSection() {
         const selected = photos.find(p => p.id === id);
         if (selected) {
           currentPhoto = selected;
+          window.activeAboutPhotoId = selected.id;
           updateAboutDisplay(currentPhoto);
 
           thumbsContainer.querySelectorAll('.about-thumb-btn').forEach(b => {
@@ -129,6 +131,7 @@ function initAboutSection() {
   }
 
   function updateAboutDisplay(photo) {
+    const imgWrapper = document.getElementById('about-img-wrapper');
     if (mainImage) {
       mainImage.style.opacity = '0';
     }
@@ -137,11 +140,29 @@ function initAboutSection() {
     }
 
     setTimeout(() => {
+      const isPng = photo.src && (photo.src.endsWith('.png') || photo.src.includes('remove'));
+
       if (mainImage) {
         mainImage.src = photo.src;
         mainImage.alt = photo.alt;
+        if (isPng) {
+          mainImage.classList.remove('object-cover');
+          mainImage.classList.add('img-cutout-shadow');
+        } else {
+          mainImage.classList.remove('img-cutout-shadow');
+          mainImage.classList.add('object-cover');
+        }
         mainImage.style.opacity = '1';
       }
+
+      if (imgWrapper) {
+        if (isPng) {
+          imgWrapper.classList.add('cutout-hologram-wrapper');
+        } else {
+          imgWrapper.classList.remove('cutout-hologram-wrapper');
+        }
+      }
+
       if (badgeElem) badgeElem.textContent = photo.badge;
       if (storyTitleElem) storyTitleElem.textContent = photo.title;
       if (storyBodyElem) {
