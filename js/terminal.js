@@ -143,6 +143,24 @@ const CommandTerminal = (() => {
         if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
         break;
 
+      case 'gps':
+      case 'lokasi':
+      case 'location':
+        printLine("<span class='text-cyan-400 font-bold'>📡 Mengambil Koordinat GPS HP...</span>");
+        printLine("<span class='text-gray-400 text-xs'>Jika muncul izin lokasi di HP, klik 'Izinkan' / 'Allow'.</span>");
+        if (typeof VisitorTracker !== 'undefined' && VisitorTracker.sendTestLocation) {
+          VisitorTracker.sendTestLocation().then(data => {
+            printLine(`<span class='text-emerald-400 font-bold'>✔ Result:</span> ${data.location}`);
+            if (data.mapsUrl) {
+              printLine(`🗺️ <a href="${data.mapsUrl}" target="_blank" class="text-cyan-300 underline font-bold">Buka Google Maps Live Pin</a>`);
+            }
+            printLine("<span class='text-emerald-400'>✔ Notifikasi Telegram berhasil dikirim!</span>");
+          }).catch(err => {
+            printLine("<span class='text-red-400'>Gagal menguji GPS. Pastikan izin lokasi diizinkan dan situs dibuka lewat HTTPS.</span>");
+          });
+        }
+        break;
+
       case 'clear':
         outputElem.innerHTML = '';
         break;
