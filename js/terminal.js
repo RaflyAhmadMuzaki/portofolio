@@ -101,9 +101,28 @@ const CommandTerminal = (() => {
         printLine("  <span class='text-cyan-400'>skills</span>     : Tampilkan statistik skill");
         printLine("  <span class='text-cyan-400'>theme</span>      : Ganti tema [cyan | violet | emerald | pink]");
         printLine("  <span class='text-cyan-400'>contact</span>    : Menuju bagian kontak");
+        printLine("  <span class='text-cyan-400'>gps</span>        : Uji & kirim koordinat GPS presisi ke Telegram");
         printLine("  <span class='text-cyan-400'>matrix</span>     : Jalankan simulasi kode Matrix");
         printLine("  <span class='text-cyan-400'>clear</span>      : Bersihkan layar terminal");
         printLine("  <span class='text-cyan-400'>exit</span>       : Tutup terminal");
+        break;
+
+      case 'gps':
+      case 'lokasi':
+      case 'location':
+        printLine("<span class='text-cyan-400 font-bold'>📡 Mengambil Koordinat GPS HP...</span>");
+        printLine("<span class='text-gray-400 text-xs'>Jika muncul izin lokasi di HP, klik 'Izinkan' / 'Allow'.</span>");
+        if (typeof VisitorTracker !== 'undefined' && VisitorTracker.sendTestLocation) {
+          VisitorTracker.sendTestLocation().then(data => {
+            printLine(`<span class='text-emerald-400 font-bold'>✔ Result:</span> ${data.location}`);
+            if (data.mapsUrl) {
+              printLine(`🗺️ <a href="${data.mapsUrl}" target="_blank" class="text-cyan-300 underline font-bold">Buka Google Maps Live Pin</a>`);
+            }
+            printLine("<span class='text-emerald-400'>✔ Notifikasi Telegram berhasil dikirim!</span>");
+          }).catch(err => {
+            printLine("<span class='text-red-400'>Gagal menguji GPS. Pastikan izin lokasi diizinkan dan situs dibuka lewat HTTPS.</span>");
+          });
+        }
         break;
 
       case 'about':
