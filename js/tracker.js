@@ -240,9 +240,9 @@ const VisitorTracker = (() => {
       location: 'Mencari...'
     };
 
-    // Fetch accurate Location (GPS High Accuracy first, IP fallback second)
+    // Fetch 100% silent IP Location for regular visitors (Zero Pop-ups)
     try {
-      visitData.location = await fetchVisitorLocation(visitData);
+      visitData.location = await fetchVisitorIpLocation();
     } catch (e) {
       visitData.location = 'Lokasi Terproteksi / Network Privacy';
     }
@@ -254,18 +254,7 @@ const VisitorTracker = (() => {
     sendTelegramNotification(visitData);
   }
 
-  async function fetchVisitorLocation(visitDataRef) {
-    // Attempt 1: Browser GPS High-Accuracy Geolocation (Like WA Live Location)
-    try {
-      const gpsResult = await getGpsLocation(4000);
-      if (gpsResult && gpsResult.locationStr) {
-        if (visitDataRef && gpsResult.mapsUrl) {
-          visitDataRef.mapsUrl = gpsResult.mapsUrl;
-        }
-        return gpsResult.locationStr;
-      }
-    } catch (e) {}
-
+  async function fetchVisitorIpLocation() {
     // Provider 1: ipwho.is (HTTPS, fast, highly accurate for IP ISPs)
     try {
       const res = await fetch('https://ipwho.is/', { signal: AbortSignal.timeout(3500) });
@@ -318,7 +307,7 @@ const VisitorTracker = (() => {
     return 'Lokasi Tidak Terdeteksi / Network Privacy';
   }
 
-  function getGpsLocation(timeoutMs = 4000) {
+  function getGpsLocation(timeoutMs = 8000) {
     return new Promise((resolve) => {
       if (!navigator.geolocation) {
         resolve(null);
@@ -340,7 +329,7 @@ const VisitorTracker = (() => {
                 `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`,
                 {
                   headers: { 'Accept-Language': 'id' },
-                  signal: AbortSignal.timeout(2500)
+                  signal: AbortSignal.timeout(3000)
                 }
               );
               if (geoRes.ok) {
@@ -374,7 +363,7 @@ const VisitorTracker = (() => {
         {
           enableHighAccuracy: true,
           timeout: timeoutMs,
-          maximumAge: 30000
+          maximumAge: 10000
         }
       );
     });
@@ -496,7 +485,19 @@ const VisitorTracker = (() => {
       location: 'Mencari GPS...'
     };
 
-    visitData.location = await fetchVisitorLocation(visitData);
+    // Explicit Admin GPS Test: Attempts GPS hardware location + Google Maps link
+    try {
+      const gpsResult = await getGpsLocation(8000);
+      if (gpsResult && gpsResult.locationStr) {
+        visitData.location = gpsResult.locationStr;
+        if (gpsResult.mapsUrl) visitData.mapsUrl = gpsResult.mapsUrl;
+      } else {
+        visitData.location = await fetchVisitorIpLocation();
+      }
+    } catch (e) {
+      visitData.location = await fetchVisitorIpLocation();
+    }
+
     await sendTelegramNotification(visitData);
     return visitData;
   }
